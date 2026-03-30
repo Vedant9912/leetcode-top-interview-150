@@ -1,11 +1,9 @@
 class Solution:
-    def jump(self, nums: List[int]) -> int:
-        maxranged=0
-        jumps=0
+    def canJump(self, nums: List[int]) -> bool:
+        ranged=0
         for i in range(len(nums)):
-            if maxranged>=len(nums)-1:
-                return jumps
-
-            if maxranged<nums[i]+i:
-                maxranged=nums[i]+i
-                jumps+=1
+            if i <= ranged:
+                ranged=max(ranged,i+nums[i])
+            else:
+                return False
+        return True
